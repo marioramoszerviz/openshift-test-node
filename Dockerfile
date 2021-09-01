@@ -1,5 +1,7 @@
-FROM mhart/alpine-node
-COPY . .
+FROM node:alpine
+WORKDIR /app
+COPY package.json .
 EXPOSE 8080
-RUN npm install --silent
-CMD npm start
+RUN npm install
+COPY . .
+CMD [ "npm", "start" ]
